@@ -35,17 +35,45 @@ function init() {
 
       analyser.getByteFrequencyData(dataArray);
       ctx.fillStyle = "rgba(0,0,0,0.2)";
+
+      // ctx.arc(0, 0, 0, 0, 2 * Math.PI, true);
+
+      // for (let i = 0; i < bars; i++) {
+      //   var centerX = Math.random + 50;
+      //   var centerY = Math.random + 50;
+      //   var radius = dataArray[i] * 10;
+
+      //   ctx.beginPath();
+      //   ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, true);
+
+      //   centerX += radius + 10;
+
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
       for (let i = 0; i < bars; i++) {
-        barHeight = dataArray[i] * 2.5;
+        barHeight = dataArray[i] * 6;
 
-        ctx.fillStyle = "hsl(350, 50%, 50%)";
         ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
-
         x += barWidth + 10;
+        if (dataArray[i] < 100) {
+          ctx.fillStyle = "hsl(350, 50%, 50%)";
+        } else if (dataArray[i] < 140) {
+          ctx.fillStyle = "hsl(180, 50%, 50%)";
+        } else if (dataArray[i] < 160) {
+          ctx.fillStyle = "hsl(60, 50%, 50%)";
+        } else if (dataArray[i] < 180) {
+          ctx.fillStyle = "hsl(270, 50%, 50%)";
+        } else if (dataArray[i] < 200) {
+          ctx.fillStyle = "hsl(130, 50%, 50%)";
+        } else {
+          ctx.fillStyle = "hsl(240, 50%, 50%)";
+        }
+
+        document.querySelector("canvas").style.transform =
+          "rotate(" + `${dataArray[i]++}` + "deg)";
       }
     }
+
     renderframe();
   });
 }
