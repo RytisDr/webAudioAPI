@@ -23,7 +23,7 @@ function init() {
   const WIDTH = canvas.width;
   const HEIGHT = canvas.height;
 
-  const barWidth = (WIDTH / bufferLength) * 13;
+  const barWidth = (WIDTH / bufferLength) * 30;
 
   let barHeight;
   let x = 0;
@@ -55,8 +55,10 @@ function init() {
 
         ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
         x += barWidth + 10;
-        if (dataArray[i] < 100) {
-          ctx.fillStyle = "hsl(350, 50%, 50%)";
+        if (dataArray[i] < 50) {
+          ctx.fillStyle = "hsl(310, 50%, 50%)";
+        } else if (dataArray[i] < 100) {
+          ctx.fillStyle = "hsl(0, 50%, 50%)";
         } else if (dataArray[i] < 140) {
           ctx.fillStyle = "hsl(180, 50%, 50%)";
         } else if (dataArray[i] < 160) {
@@ -69,8 +71,8 @@ function init() {
           ctx.fillStyle = "hsl(240, 50%, 50%)";
         }
 
-        document.querySelector("canvas").style.transform =
-          "rotate(" + `${dataArray[i]++}` + "deg)";
+        // document.querySelector("canvas").style.transform =
+        //   "rotate(" + `${dataArray[i]}` + "deg)";
       }
     }
 

@@ -53,7 +53,7 @@ audio {
   position: absolute;
   top: 0;
   left: 0;
-  /* background: linear-gradient(transparent, #00035f, transparent); */
+  background: linear-gradient(transparent, #00035f, transparent);
   background-size: 100% 7px;
   animation: bg 1s infinite linear;
   z-index: 2;
